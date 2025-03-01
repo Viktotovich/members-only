@@ -1,4 +1,4 @@
-const { body, validationResult } = require("express-validator");
+const { body } = require("express-validator");
 const softErrors = require("./softErrors");
 const db = require("../db/queries");
 
@@ -23,6 +23,7 @@ const validateSignUp = [
     .withMessage(softErrors.length("Username", 3, 70))
     .custom(duplicateUserCheck)
     .withMessage(softErrors.taken()),
+  //TODO: Continue for passwords, and then add the validators as a middleware into the router
 ];
 
 async function duplicateUserCheck(value) {
@@ -31,3 +32,5 @@ async function duplicateUserCheck(value) {
     throw new Error("Username already taken.");
   }
 }
+
+module.exports = validateSignUp;

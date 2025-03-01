@@ -2,7 +2,8 @@ const passport = require("passport");
 const passwordUtils = require("../lib/passwordUtils");
 const db = require("../db/queries");
 const links = require("../links");
-const { name } = require("ejs");
+// TODO: for Sign up and login routes
+const { validationResult } = require("express-validator");
 
 module.exports.getIndex = (req, res) => {
   const title = "Welcome to the index page";
