@@ -10,6 +10,9 @@ const client = new Client({
   host: PGHOST,
   port: PGPORT,
   database: PGDATABASE,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
 
 /*CUSTOM DB LOGIC - based on App reqs*/
