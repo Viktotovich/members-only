@@ -8,7 +8,30 @@
   <body>
     <h1><%=title%></h1>
     <hr />
+    <%-include("../partials/error-display")%>
     <form action="/register" method="POST">
+      <div class="f-name">
+        <label for="firstName">First Name: </label>
+        <input
+          type="text"
+          name="firstName"
+          id="first-name"
+          required
+          minlength="2"
+          maxlength="35"
+        />
+      </div>
+      <div class="l-name">
+        <label for="lastName">Last Name: </label>
+        <input
+          type="text"
+          name="lastName"
+          id="last-name"
+          required
+          minlength="2"
+          maxlength="35"
+        />
+      </div>
       <div class="u-name">
         <label for="username">Username: </label>
         <input
@@ -28,6 +51,17 @@
           maxlength="60"
           name="password"
           id="password"
+          required
+        />
+      </div>
+      <div class="c-p-container">
+        <label for="cPassword">Confirm Password:</label>
+        <input
+          type="password"
+          minlength="5"
+          maxlength="60"
+          name="cPassword"
+          id="c-password"
           required
         />
       </div>

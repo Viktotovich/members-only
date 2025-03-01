@@ -2,6 +2,7 @@ const passport = require("passport");
 const passwordUtils = require("../lib/passwordUtils");
 const db = require("../db/queries");
 const links = require("../links");
+const { name } = require("ejs");
 
 module.exports.getIndex = (req, res) => {
   const title = "Welcome to the index page";
@@ -32,17 +33,20 @@ module.exports.postLogIn = async (req, res, next) => {
 };
 
 module.exports.getRegister = (req, res, next) => {
-  const title = "Register a new account";
+  const title = "Create a new account";
   res.render("pages/register", { title, links });
 };
 
+//TODO: Place a middleware before this to make sure that passwords are correct
 module.exports.postRegister = async (req, res, next) => {
+  const { firstName, lastName, username, cPassword } = req.body;
+  const fullName = firstName + " " + lastName;
   const saltHash = passwordUtils.genPassword(req.body.password);
 
   const salt = saltHash.salt;
   const hash = saltHash.hash;
 
-  await db.addNewUser(req.body.username, hash, salt);
+  await db.addNewUser(fullName, "Not a Member", username, hash, salt);
   res.redirect("/login");
 };
 

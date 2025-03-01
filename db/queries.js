@@ -24,11 +24,18 @@ module.exports.getUserById = async function (uId) {
   }
 };
 
-module.exports.addNewUser = async function (uname, hash, salt) {
+//adding users
+module.exports.addNewUser = async function (
+  fullname,
+  status,
+  uname,
+  hash,
+  salt
+) {
   try {
     const complexQuery =
-      "INSERT INTO users_and_passwords (username, hash, salt) VALUES ($1, $2, $3);";
-    await pool.query(complexQuery, [uname, hash, salt]);
+      "INSERT INTO users_and_passwords (fullname, membership_status, username, hash, salt) VALUES ($1, $2, $3, $4, $5);";
+    await pool.query(complexQuery, [fullname, status, uname, hash, salt]);
   } catch (err) {
     console.error(err);
   }
