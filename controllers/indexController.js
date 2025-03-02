@@ -40,7 +40,15 @@ module.exports.getRegister = (req, res, next) => {
 
 //TODO: Place a middleware before this to make sure that passwords are correct
 module.exports.postRegister = async (req, res, next) => {
-  const { firstName, lastName, username, cPassword } = req.body;
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return res.status(400).render("pages/register", {
+      title: "Registration Failed",
+      errors: errors.array(),
+    });
+  }
+
+  const { firstName, lastName, username } = req.body;
   const fullName = firstName + " " + lastName;
   const saltHash = passwordUtils.genPassword(req.body.password);
 

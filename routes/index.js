@@ -17,7 +17,7 @@ indexRouter.get("/", getIndex);
 indexRouter.get("/login", getLogIn);
 indexRouter.post("/login", postLogIn);
 indexRouter.get("/register", getRegister);
-indexRouter.post("/register", postRegister);
+indexRouter.post("/register", [validateSignUp, postRegister]);
 indexRouter.get("/login-failure", getLogInFail);
 indexRouter.get("/login-success", getLogInSuccess);
 indexRouter.get("/protected-route", getProtectedRoute);
