@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%>></title>
+  </head>
+  <body>
+    <section>
+      <h1><%=title%></h1>
+      <hr />
+      <div class="name-username">
+        <p>Your name: <%=user.fullname%></p>
+        <p>Your username: <%=user.username%></p>
+      </div>
+      <div class="status">
+        <p>Your membership status:</p>
+        <p><%=user.membership_status%></p>
+        <a href="/join/<%=user.id%>">Change</a>
+      </div>
+      <div class="faq">
+        <h2>FAQs:</h2>
+        <p>What is the difference between my name and username?</p>
+        <p>
+          Your username is used only for logging in, while your name is
+          displayed on posts and messages that you leave.
+        </p>
+      </div>
+    </section>
+  </body>
+</html>
