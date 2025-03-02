@@ -21,4 +21,4 @@ const softErrors = {
   },
 };
 
-export default softErrors;
+module.exports = softErrors;
