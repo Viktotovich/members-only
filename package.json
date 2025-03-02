@@ -6,8 +6,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "seed": "node db/populatedb.js",
     "dev": "node --watch app.js",
-    "build:css": "postcss src/css/style.css -o public/css/styles.css",
-    "watch:css": "postcss src/css/styles.css -o public/css/styles.css --watch"
+    "build:css": "postcss src/css/styles.css -o public/css/styles.css",
+    "watch:css": "postcss src/css/styles.css -o public/css/styles.css --watch",
+    "all": "postcss src/css/styles.css -o public/css/styles.css --watch && node --watch app.js"
   },
   "author": "",
   "license": "ISC",
