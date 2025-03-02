@@ -4,71 +4,91 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body>
-    <h1><%=title%></h1>
+  <body class="ml-50 mr-50">
+    <h1 class="text-center mt-5 mb-5 text-3xl"><%=title%></h1>
     <hr />
     <%-include("../partials/error-display")%>
     <form action="/register" method="POST">
-      <div class="f-name">
-        <label for="firstName">First Name: </label>
-        <input
-          type="text"
-          name="firstName"
-          id="first-name"
-          required
-          minlength="2"
-          maxlength="35"
-        />
+      <div class="mt-10 mx-70">
+        <div class="flex flex-col">
+          <label for="firstName">First Name: </label>
+          <input
+            class="border-1 border-slate-300 rounded-sm"
+            type="text"
+            name="firstName"
+            id="first-name"
+            required
+            minlength="2"
+            maxlength="35"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="lastName">Last Name: </label>
+          <input
+            class="border-1 border-slate-300 rounded-sm"
+            type="text"
+            name="lastName"
+            id="last-name"
+            required
+            minlength="2"
+            maxlength="35"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="username">Username: </label>
+          <input
+            class="border-1 border-slate-300 rounded-sm"
+            type="text"
+            name="username"
+            id="username"
+            required
+            minlength="3"
+            maxlength="70"
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="password">Password:</label>
+          <input
+            class="border-1 border-slate-300 rounded-sm"
+            type="password"
+            minlength="5"
+            maxlength="60"
+            name="password"
+            id="password"
+            required
+          />
+        </div>
+        <div class="flex flex-col">
+          <label for="cPassword">Confirm Password:</label>
+          <input
+            class="border-1 border-slate-300 rounded-sm"
+            type="password"
+            minlength="5"
+            maxlength="60"
+            name="cPassword"
+            id="c-password"
+            required
+          />
+        </div>
       </div>
-      <div class="l-name">
-        <label for="lastName">Last Name: </label>
-        <input
-          type="text"
-          name="lastName"
-          id="last-name"
-          required
-          minlength="2"
-          maxlength="35"
-        />
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="mb-10 mt-5 px-20 py-3 rounded-sm bg-blue-950 text-white hover:bg-blue-900 hover:cursor-pointer"
+        >
+          Register
+        </button>
       </div>
-      <div class="u-name">
-        <label for="username">Username: </label>
-        <input
-          type="text"
-          name="username"
-          id="username"
-          required
-          minlength="3"
-          maxlength="70"
-        />
-      </div>
-      <div class="p-container">
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          minlength="5"
-          maxlength="60"
-          name="password"
-          id="password"
-          required
-        />
-      </div>
-      <div class="c-p-container">
-        <label for="cPassword">Confirm Password:</label>
-        <input
-          type="password"
-          minlength="5"
-          maxlength="60"
-          name="cPassword"
-          id="c-password"
-          required
-        />
-      </div>
-      <button type="submit">Register</button>
     </form>
-    <hr />
-    <p>Already have an account?</p>
-    <a href="/login">Log In!</a>
+    <h2 class="text-center text-3xl mt-10">Already have an account?</h2>
+    <div class="flex justify-center">
+      <a
+        href="/login"
+        class="mt-10 mb-30 py-3 px-20 rounded-sm bg-blue-500 text-white hover:bg-blue-400 hover:cursor-pointer"
+        >Log In!</a
+      >
+    </div>
   </body>
 </html>
