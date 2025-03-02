@@ -4,30 +4,45 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
-  <body>
-    <h1><%=title%></h1>
+  <body class="ml-50 mr-50">
+    <h1 class="text-center mt-5 mb-5 text-3xl"><%=title%></h1>
     <hr />
     <form action="/login" method="POST">
-      <div class="u-name">
-        <label for="username">Username:</label>
-        <input type="text" name="username" id="username" />
+      <div class="mt-10">
+        <div class="flex flex-col">
+          <label for="username">Username:</label>
+          <input type="text" name="username" id="username" />
+        </div>
+        <div class="flex flex-col">
+          <label for="password">Password:</label>
+          <input
+            type="password"
+            minlength="5"
+            maxlength="60"
+            name="password"
+            id="password"
+            required
+          />
+        </div>
       </div>
-      <div class="p-container">
-        <label for="password">Password:</label>
-        <input
-          type="password"
-          minlength="5"
-          maxlength="60"
-          name="password"
-          id="password"
-          required
-        />
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="mb-10 mt-5 px-20 py-3 rounded-sm bg-blue-500 text-white hover:bg-blue-400 hover:cursor-pointer"
+        >
+          Log In
+        </button>
       </div>
-      <button type="submit">Log In</button>
     </form>
-    <hr />
-    <p>Don't have an account yet?</p>
-    <a href="/register">Register Now</a>
+    <h2 class="text-center text-2xl mt-20">Don't have an account yet?</h2>
+    <div class="flex justify-center">
+      <a
+        href="/register"
+        class="mt-5 py-3 px-20 rounded-sm bg-blue-950 text-white hover:bg-blue-900 hover:cursor-pointer"
+        >Register Now</a
+      >
+    </div>
   </body>
 </html>
