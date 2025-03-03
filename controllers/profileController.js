@@ -13,3 +13,21 @@ module.exports.getMyProfile = async (req, res, next) => {
     );
   }
 };
+
+module.exports.postJoinMembership = async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    await db.changeUserStatus("Member", req.user.id);
+    res.redirect("/profile");
+  } else {
+    res.send(401);
+  }
+};
+
+module.exports.postLeaveMembership = async (req, res, next) => {
+  if (req.isAuthenticated()) {
+    await db.changeUserStatus("Not a Member", req.user.id);
+    res.redirect("/profile");
+  } else {
+    res.send(401);
+  }
+};

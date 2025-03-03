@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title><%=title%>></title>
+    <title><%=title%></title>
     <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
@@ -15,25 +15,52 @@
       </div>
       <div class="my-5 border-t-1 border-b-1 border-blue-200 py-2">
         <p>Your membership status:</p>
-        <p class="text-center underline mt-2 mb-2">
+        <p class="text-center underline mt-5 mb-2">
           <%=user.membership_status%>
         </p>
         <div class="flex justify-center">
-          <a
-            href="/join/<%=user.id%>"
-            class="mb-5 mt-5 px-10 py-1.5 bg-blue-400 text-white hover:bg-blue-300 hover:cursor-pointer"
-            >Become a Member</a
-          >
+          <%if (user.membership_status === "Not a Member") { %>
+          <form action="/profile/join/<%=user.id%>" method="POST">
+            <button
+              class="mb-5 mt-5 px-10 py-1.5 bg-blue-400 text-white hover:bg-blue-300 hover:cursor-pointer"
+            >
+              Become a Member
+            </button>
+          </form>
+          <%} else if (user.membership_status === "Member") { %>
+          <form action="/profile/leave/<%=user.id%>" method="POST">
+            <button
+              class="mb-5 mt-5 px-10 py-1.5 bg-red-400 text-white hover:bg-red-300 hover:cursor-pointer"
+            >
+              Drop your membership
+            </button>
+          </form>
+          <% } else { %>
+          <p>
+            You cannot become a member at a moment due to your special status.
+          </p>
+          <%}%>
         </div>
       </div>
       <div>
-        <h2 class="border-1 border-gray-200 text-center">FAQs</h2>
-        <p class="border-t-1 border-blue-200 mt-3">
+        <h2 class="border-1 border-gray-200 text-center mt-30">FAQs</h2>
+        <p class="border-t-1 border-blue-200 mt-3 pt-2">
           What is the difference between my name and username?
         </p>
         <p class="border-b-1 border-blue-200 pb-3 italic text-sm mt-2">
           - Your username is used only for logging in, while your name is
           displayed on posts and messages that you leave.
+        </p>
+        <p class="pt-2">What happens if I become a member?</p>
+        <p class="border-b-1 border-blue-200 pb-3 italic text-sm mt-2">
+          - You will be able to make posts. It is also completely free and you
+          can stop being a member in a click of a button.
+        </p>
+        <p class="pt-2">What happens if I drop my membership?</p>
+        <p class="border-b-1 border-blue-200 pb-3 italic text-sm mt-2">
+          - You lose your ability to make posts. However, your account and your
+          previous posts (if any) are still going to be saved. On top of that,
+          you can re-join at any time.
         </p>
       </div>
     </section>

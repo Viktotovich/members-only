@@ -1,5 +1,6 @@
 const pool = require("./pool");
 
+//getting
 module.exports.getUserByUname = async function (uname) {
   try {
     const { rows } = await pool.query(
@@ -36,6 +37,17 @@ module.exports.addNewUser = async function (
     const complexQuery =
       "INSERT INTO users_and_passwords (fullname, membership_status, username, hash, salt) VALUES ($1, $2, $3, $4, $5);";
     await pool.query(complexQuery, [fullname, status, uname, hash, salt]);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+//updating
+module.exports.changeUserStatus = async function (status, id) {
+  try {
+    const complexQuery =
+      "UPDATE users_and_passwords SET membership_status = $1 WHERE id = $2;";
+    await pool.query(complexQuery, [status, id]);
   } catch (err) {
     console.error(err);
   }
