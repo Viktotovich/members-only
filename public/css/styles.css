@@ -20,6 +20,7 @@
     --color-blue-300: oklch(0.809 0.105 251.813);
     --color-blue-400: oklch(0.707 0.165 254.624);
     --color-blue-500: oklch(0.623 0.214 259.815);
+    --color-blue-800: oklch(0.424 0.199 265.638);
     --color-blue-900: oklch(0.379 0.146 265.522);
     --color-blue-950: oklch(0.282 0.091 267.935);
     --color-slate-300: oklch(0.869 0.022 252.894);
@@ -468,6 +469,9 @@
     font-size: var(--text-xs);
     line-height: var(--tw-leading, var(--text-xs--line-height));
   }
+  .text-blue-800 {
+    color: var(--color-blue-800);
+  }
   .text-gray-900 {
     color: var(--color-gray-900);
   }
@@ -526,6 +530,13 @@
     &:hover {
       @media (hover: hover) {
         background-color: var(--color-red-300);
+      }
+    }
+  }
+  .hover\:text-blue-900 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-blue-900);
       }
     }
   }
