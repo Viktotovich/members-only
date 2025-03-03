@@ -38,7 +38,6 @@ module.exports.getRegister = (req, res, next) => {
   res.render("pages/register", { title, links });
 };
 
-//TODO: Place a middleware before this to make sure that passwords are correct
 module.exports.postRegister = async (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
@@ -60,9 +59,8 @@ module.exports.postRegister = async (req, res, next) => {
 };
 
 module.exports.getLogInSuccess = (req, res, next) => {
-  res.send(
-    "<p> You have successfully logged in. --> <a href='/protected-route'> Go to the protected route </a></p>"
-  );
+  const title = "Login Success!";
+  res.render("pages/login-success", { title });
 };
 
 module.exports.getLogInFail = (req, res, next) => {
@@ -78,6 +76,7 @@ module.exports.getLogout = (req, res, next) => {
   });
 };
 
+//TODO: DELETE THIS AS IT IS REPLACED BY GETMYPROFILE
 module.exports.getProtectedRoute = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.send(

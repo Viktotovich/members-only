@@ -11,6 +11,7 @@ const app = express();
 
 //Routes
 const indexRouter = require("./routes/index");
+const profileRouter = require("./routes/profileRouter");
 
 const assetsPath = path.join(__dirname, "public");
 
@@ -37,9 +38,10 @@ app.use(
 
 app.use(passport.session());
 app.use("/", indexRouter);
+app.use("/profile", profileRouter);
 
 app.listen(3000, () => {
-  console.log();
+  console.log("Hey Ya");
 });
 
 app.use((err, req, res, next) => {
