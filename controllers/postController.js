@@ -1,3 +1,4 @@
+const e = require("express");
 const db = require("../db/queries");
 const links = require("../links");
 const { validationResult } = require("express-validator");
@@ -9,7 +10,26 @@ module.exports.getPostsMain = async (req, res) => {
   if (req.isAuthenticated) {
     const isAdmin = await adminCheck(req.user.id);
     res.render("pages/posts", { title, posts, approved, isAdmin });
+  } else {
+    res.send(404); //Muahahaha
   }
+};
+
+module.exports.getMakeNewPost = (req, res) => {
+  if (req.isAuthenticated) {
+    const title = "Make a New Post";
+    res.render("pages/new-post", { title, links });
+  } else {
+    res.send(401);
+  }
+};
+
+module.exports.postMakeNewPost = (req, res) => {
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    //TODO
+  }
+  //TODO
 };
 
 // Helper functions

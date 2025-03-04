@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
+  </head>
+  <body>
+    <a
+      href="/login-success"
+      class="text-blue-800 mt-15 hover:text-blue-900 block text-center underline hover:cursor-pointer"
+      >Back to main menu?</a
+    >
+    <section>
+      <h1><%=title%></h1>
+      <form action="/posts/new">
+        <label for="message">What's on your mind? </label>
+        <textarea
+          name="message"
+          id="message"
+          minlength="4"
+          maxlength="250"
+          placeholder="Ruby on Rails is the best programming language"
+          cols="50"
+          required
+        ></textarea>
+        <button type="submit">Swoosh it!</button>
+      </form>
+    </section>
+  </body>
+</html>
