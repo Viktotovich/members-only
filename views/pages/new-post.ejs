@@ -12,20 +12,29 @@
       class="text-blue-800 mt-15 hover:text-blue-900 block text-center underline hover:cursor-pointer"
       >Back to main menu?</a
     >
-    <section>
-      <h1><%=title%></h1>
+    <section class="ml-50 mr-50">
+      <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
       <form action="/posts/new">
-        <label for="message">What's on your mind? </label>
-        <textarea
-          name="message"
-          id="message"
-          minlength="4"
-          maxlength="250"
-          placeholder="Ruby on Rails is the best programming language"
-          cols="50"
-          required
-        ></textarea>
-        <button type="submit">Swoosh it!</button>
+        <div class="flex flex-col">
+          <label for="message" class="mb-2 underline"
+            >What's on your mind?
+          </label>
+          <textarea
+            name="message"
+            id="message"
+            minlength="4"
+            maxlength="250"
+            placeholder="Ruby on Rails is the best programming language"
+            cols="50"
+            required
+          ></textarea>
+        </div>
+        <button
+          type="submit"
+          class="py-2 px-15 mt-2 rounded-md hover:bg-blue-400 hover:text-white max-w-50 border-slate-200 hover:border-white border-2 hover:cursor-pointer"
+        >
+          Swoosh it!
+        </button>
       </form>
     </section>
   </body>
