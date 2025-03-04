@@ -35,6 +35,17 @@ module.exports.getUserById = async function (uId) {
   }
 };
 
+module.exports.checkIfAdminById = async function (uId) {
+  try {
+    const complexQuery =
+      "SELECT * FROM admins LEFT JOIN users_and_passwords ON users_and_passwords.id = admins.user_id WHERE users_and_passwords.id = $1";
+    const { rows } = await pool.query(complexQuery, [uId]);
+    return rows;
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 //adding users
 module.exports.addNewUser = async function (
   fullname,

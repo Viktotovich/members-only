@@ -12,6 +12,7 @@ const app = express();
 //Routes
 const indexRouter = require("./routes/index");
 const profileRouter = require("./routes/profileRouter");
+const postRouter = require("./routes/postRouter");
 
 const assetsPath = path.join(__dirname, "public");
 
@@ -33,12 +34,13 @@ app.use(
     cookie: {
       maxAge: 1000 * 60 * 60 * 24, //one day
     },
-  })
+  }),
 );
 
 app.use(passport.session());
 app.use("/", indexRouter);
 app.use("/profile", profileRouter);
+app.use("/posts", postRouter);
 
 app.listen(3000, () => {
   console.log("Hey Ya");

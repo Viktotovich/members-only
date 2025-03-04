@@ -50,6 +50,14 @@ const query = `
       REFERENCES users_and_passwords(id)
         ON DELETE CASCADE
   );
+
+  CREATE TABLE IF NOT EXISTS "admins" (
+  "user_id" INTEGER PRIMARY KEY,
+  CONSTRAINT fk_user
+    FOREIGN KEY (user_id)
+      REFERENCES users_and_passwords(id)
+        ON DELETE CASCADE
+  );
 `;
 
 /*TODO:
