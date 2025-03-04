@@ -14,7 +14,7 @@
     >
     <section class="ml-50 mr-50">
       <h1 class="mt-5 mb-10 text-3xl text-center"><%=title%></h1>
-      <form action="/posts/new">
+      <form action="/posts/new" method="POST">
         <div class="flex flex-col">
           <label for="message" class="mb-2 underline"
             >What's on your mind?
@@ -24,7 +24,7 @@
             id="message"
             minlength="4"
             maxlength="250"
-            placeholder="Ruby on Rails is the best programming language"
+            placeholder="Ruby on Rails is the best programming language framework"
             cols="50"
             required
           ></textarea>
@@ -36,6 +36,7 @@
           Swoosh it!
         </button>
       </form>
+      <%-include("../partials/error-display.ejs")%>
     </section>
   </body>
 </html>

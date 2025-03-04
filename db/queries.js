@@ -63,6 +63,16 @@ module.exports.addNewUser = async function (
   }
 };
 
+module.exports.makeNewPost = async function (content, uId) {
+  try {
+    const complexQuery =
+      "INSERT INTO messages (message_content, user_id) VALUES ($1, $2)";
+    await pool.query(complexQuery, [content, uId]);
+  } catch (err) {
+    console.error(err);
+  }
+};
+
 //updating
 module.exports.changeUserStatus = async function (status, id) {
   try {

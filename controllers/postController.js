@@ -9,7 +9,13 @@ module.exports.getPostsMain = async (req, res) => {
   const approved = checkApproval(req.user.membership_status);
   if (req.isAuthenticated) {
     const isAdmin = await adminCheck(req.user.id);
-    res.render("pages/posts", { title, posts, approved, isAdmin });
+    res.render("pages/posts", {
+      title,
+      posts,
+      approved,
+      isAdmin,
+      fullname: req.user.fullname,
+    });
   } else {
     res.send(404); //Muahahaha
   }
@@ -24,12 +30,18 @@ module.exports.getMakeNewPost = (req, res) => {
   }
 };
 
-module.exports.postMakeNewPost = (req, res) => {
+module.exports.postMakeNewPost = async (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    //TODO
+    const title = "Try making a new post again";
+    res.redirect("/posts/new", { errors: errors.array(), title });
+  } else if (req.isAuthenticated()) {
+    const posts = await db.getAllMessages();
+    await db.makeNewPost(req.body.message, req.user.id);
+    res.redirect("/posts");
+  } else {
+    res.send(404);
   }
-  //TODO
 };
 
 // Helper functions
