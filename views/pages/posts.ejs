@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=title%></title>
+  </head>
+  <body>
+    <a
+      href="/login-success"
+      class="text-blue-800 mt-15 hover:text-blue-900 block text-center underline hover:cursor-pointer"
+      >Main Menu</a
+    >
+    <section>
+      <h1><%=title%></h1>
+      <a href="/posts/new">Create a Post</a>
+      <p>Browse through the posts of others:</p>
+      <%-include("../partials/post-display")%>
+    </section>
+  </body>
+</html>
