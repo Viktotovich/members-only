@@ -5,9 +5,19 @@ module.exports.getUserByUname = async function (uname) {
   try {
     const { rows } = await pool.query(
       "SELECT * FROM users_and_passwords WHERE username = $1",
-      [uname]
+      [uname],
     );
     return rows[0];
+  } catch (err) {
+    console.error(err);
+  }
+};
+
+module.exports.getAllMessages = async function () {
+  try {
+    const complexQuery = "SELECT * FROM messages;";
+    const { rows } = await pool.query(complexQuery);
+    return rows;
   } catch (err) {
     console.error(err);
   }
@@ -17,7 +27,7 @@ module.exports.getUserById = async function (uId) {
   try {
     const { rows } = await pool.query(
       "SELECT * FROM users_and_passwords WHERE id = $1",
-      [uId]
+      [uId],
     );
     return rows[0];
   } catch (err) {
@@ -31,7 +41,7 @@ module.exports.addNewUser = async function (
   status,
   uname,
   hash,
-  salt
+  salt,
 ) {
   try {
     const complexQuery =
