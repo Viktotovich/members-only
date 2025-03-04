@@ -1,5 +1,5 @@
 const indexRouter = require("express").Router();
-const validateSignUp = require("../validators/validators");
+const { validateSignUp } = require("../validators/validators");
 
 const {
   getIndex,

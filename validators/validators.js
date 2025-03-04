@@ -2,7 +2,7 @@ const { body } = require("express-validator");
 const softErrors = require("./softErrors");
 const db = require("../db/queries");
 
-const validateSignUp = [
+module.exports.validateSignUp = [
   body("firstName")
     .trim()
     .isAlpha()
@@ -31,8 +31,13 @@ const validateSignUp = [
     .withMessage(softErrors.length("Password", 5, 60))
     .custom(passwordMatchCheck)
     .withMessage(softErrors.noMatch()),
-  //Some pattern check would be nice
-  //TODO: Continue for passwords, and then add the validators as a middleware into the router
+];
+
+module.exports.validateNewPost = [
+  body("message")
+    .isLength({ min: 4, max: 250 })
+    .withMessage(softErrors.length("Post", 4, 250)),
+  //some limiter would be nice for the prod version, a func that checks whether the user has created a post in the past 15 mins
 ];
 
 async function duplicateUserCheck(value) {
@@ -45,5 +50,3 @@ async function duplicateUserCheck(value) {
 async function passwordMatchCheck(value, { req }) {
   return value === req.body.password;
 }
-
-module.exports = validateSignUp;
