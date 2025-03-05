@@ -36,7 +36,6 @@ module.exports.postMakeNewPost = async (req, res) => {
     const title = "Try making a new post again";
     res.redirect("/posts/new", { errors: errors.array(), title });
   } else if (req.isAuthenticated()) {
-    const posts = await db.getAllMessages();
     await db.makeNewPost(req.body.message, req.user.id);
     res.redirect("/posts");
   } else {
