@@ -5,6 +5,7 @@ const { validationResult } = require("express-validator");
 module.exports.getPostsMain = async (req, res) => {
   const title = "All messages";
   const posts = await db.getAllMessages();
+  console.log(posts);
   const approved = checkApproval(req.user.membership_status);
   if (req.isAuthenticated()) {
     const isAdmin = await adminCheck(req.user.id);
@@ -13,7 +14,6 @@ module.exports.getPostsMain = async (req, res) => {
       posts,
       approved,
       isAdmin,
-      fullname: req.user.fullname,
     });
   } else {
     res.send(404); //Muahahaha

@@ -15,7 +15,8 @@ module.exports.getUserByUname = async function (uname) {
 
 module.exports.getAllMessages = async function () {
   try {
-    const complexQuery = "SELECT * FROM messages;";
+    const complexQuery =
+      "SELECT * FROM messages LEFT JOIN users_and_passwords ON users_and_passwords.id = messages.user_id;";
     const { rows } = await pool.query(complexQuery);
     return rows;
   } catch (err) {
