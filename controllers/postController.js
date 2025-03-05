@@ -43,7 +43,7 @@ module.exports.postMakeNewPost = async (req, res) => {
 };
 
 module.exports.postDelete = async function (req, res) {
-  if (req.isAuthenticated() && adminCheck(req.user.id)) {
+  if (req.isAuthenticated() && (await adminCheck(req.user.id))) {
     const postId = req.params.id;
     await db.deleteMessageById(postId);
     res.redirect("back"); //CHANGE THIS AS IT IS DEPRECIATED
