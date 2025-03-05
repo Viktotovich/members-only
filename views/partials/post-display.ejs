@@ -1,11 +1,10 @@
 <%if (posts.length > 0) { %> <%posts.forEach((post) => { %>
-<hr />
-<div class="post-container">
-  <div class="post-top">
-    <p><%=approved ? fullname : "???"%></p>
-    <p><%=approved ? post.created_at : "???"%></p>
+<div class="post-container border-gray-200 py-5 px-5 mb-10 border-1">
+  <div class="post-top mb-10 flex justify-between">
+    <p class="font-bold"><%=approved ? fullname : "???"%></p>
+    <p class="text-xs"><%=approved ? post.created_at : "???"%></p>
   </div>
-  <div class="post-body">
+  <div class="post-body mb-5">
     <p><%=post.message_content%></p>
   </div>
   <%if (isAdmin) { %>
@@ -14,5 +13,4 @@
   </form>
   <%}%>
 </div>
-<hr />
 <%})%> <%}%>

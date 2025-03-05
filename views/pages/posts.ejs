@@ -4,17 +4,24 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%=title%></title>
+    <link rel="stylesheet" href="/css/styles.css" />
   </head>
   <body>
     <a
       href="/login-success"
-      class="text-blue-800 mt-15 hover:text-blue-900 block text-center underline hover:cursor-pointer"
-      >Main Menu</a
+      class="text-blue-800 mt-10 mb-20 hover:text-blue-900 block text-center underline hover:cursor-pointer"
+      >Back to Main Menu</a
     >
-    <section>
-      <h1><%=title%></h1>
-      <a href="/posts/new">Create a Post</a>
-      <p>Browse through the posts of others:</p>
+    <section class="ml-50 mr-50">
+      <h1 class="text-3xl mb-10 text-center"><%=title%></h1>
+      <div class="mb-10 text-center">
+        <a
+          href="/posts/new"
+          class="py-2 px-15 rounded-md hover:bg-blue-400 hover:text-white max-w-50 border-slate-200 hover:border-white border-2 hover:cursor-pointer"
+          >Create a Post</a
+        >
+      </div>
+      <p class="mb-5 text-center">Browse through the posts of others:</p>
       <%-include("../partials/post-display")%>
     </section>
   </body>
