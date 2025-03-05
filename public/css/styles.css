@@ -225,6 +225,9 @@
   .mt-20 {
     margin-top: calc(var(--spacing) * 20);
   }
+  .mt-30 {
+    margin-top: calc(var(--spacing) * 30);
+  }
   .mt-50 {
     margin-top: calc(var(--spacing) * 50);
   }
@@ -376,6 +379,9 @@
   }
   .px-20 {
     padding-inline: calc(var(--spacing) * 20);
+  }
+  .px-50 {
+    padding-inline: calc(var(--spacing) * 50);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);

@@ -4,9 +4,12 @@ const db = require("../db/queries");
 const links = require("../links");
 const { validationResult } = require("express-validator");
 
-module.exports.getIndex = (req, res) => {
+module.exports.getIndex = async (req, res) => {
   const title = "Welcome to the index page";
-  res.render("pages/index", { title, links });
+  const posts = await db.getAllMessages();
+  const isAdmin = false;
+  const approved = false;
+  res.render("pages/index", { title, links, posts, isAdmin, approved });
 };
 
 module.exports.getLogIn = (req, res, next) => {
@@ -79,11 +82,11 @@ module.exports.getLogout = (req, res, next) => {
 module.exports.getProtectedRoute = (req, res, next) => {
   if (req.isAuthenticated()) {
     res.send(
-      "<h1>You are authenticated</h1><p><a href='/logout'>Logout and reload</a></p>"
+      "<h1>You are authenticated</h1><p><a href='/logout'>Logout and reload</a></p>",
     );
   } else {
     res.send(
-      "<h1>You are not authenticated!</h1><p><a href='/login'>Login</a></p>"
+      "<h1>You are not authenticated!</h1><p><a href='/login'>Login</a></p>",
     );
   }
 };

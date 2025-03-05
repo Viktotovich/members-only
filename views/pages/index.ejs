@@ -12,9 +12,20 @@
       <div class="flex justify-center">
         <a
           href="/login"
-          class="mt-50 rounded-sm text-white bg-blue-500 p-2.5 text-3xl hover:bg-blue-400 px-20 py-3 inline border"
+          class="mt-20 rounded-sm text-white bg-blue-500 p-2.5 text-3xl hover:bg-blue-400 px-20 py-3 inline border"
           >Login</a
         >
+      </div>
+      <div class="px-50 mt-10">
+        <h2 class="text-2xl mb-5 text-center">
+          You don't wanna miss out on what our super secret private club is
+          raving about:
+        </h2>
+        <%-include("../partials/post-display.ejs")%>
+        <p class="text-sm">
+          *You will not see the dates or usernames unless you are part of the
+          club
+        </p>
       </div>
     </section>
   </body>
