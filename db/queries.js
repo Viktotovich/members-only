@@ -83,3 +83,13 @@ module.exports.changeUserStatus = async function (status, id) {
     console.error(err);
   }
 };
+
+//Deleting
+module.exports.deleteMessageById = async function (postId) {
+  try {
+    const complexQuery = "DELETE FROM messages WHERE message_id = $1";
+    await pool.query(complexQuery, [postId]);
+  } catch (err) {
+    console.error(err);
+  }
+};

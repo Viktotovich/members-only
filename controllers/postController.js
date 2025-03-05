@@ -1,4 +1,3 @@
-const e = require("express");
 const db = require("../db/queries");
 const links = require("../links");
 const { validationResult } = require("express-validator");
@@ -38,6 +37,16 @@ module.exports.postMakeNewPost = async (req, res) => {
   } else if (req.isAuthenticated()) {
     await db.makeNewPost(req.body.message, req.user.id);
     res.redirect("/posts");
+  } else {
+    res.send(404);
+  }
+};
+
+module.exports.postDelete = async function (req, res) {
+  if (req.isAuthenticated() && adminCheck(req.user.id)) {
+    const postId = req.params.id;
+    await db.deleteMessageById(postId);
+    res.redirect("back"); //CHANGE THIS AS IT IS DEPRECIATED
   } else {
     res.send(404);
   }
