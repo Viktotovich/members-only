@@ -6,7 +6,7 @@ module.exports.getPostsMain = async (req, res) => {
   const title = "All messages";
   const posts = await db.getAllMessages();
   const approved = checkApproval(req.user.membership_status);
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     const isAdmin = await adminCheck(req.user.id);
     res.render("pages/posts", {
       title,
@@ -21,7 +21,7 @@ module.exports.getPostsMain = async (req, res) => {
 };
 
 module.exports.getMakeNewPost = (req, res) => {
-  if (req.isAuthenticated) {
+  if (req.isAuthenticated()) {
     const title = "Make a New Post";
     res.render("pages/new-post", { title, links });
   } else {
